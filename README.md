@@ -31,9 +31,9 @@ using a typed language with PICO-8.
 
 ### Create a PICO-8 project
 
-1. Run `bin/tspico8.js init -d mycart` to generate the default workspace.
-2. Optionally configure `p8workspace/tspico8.json` to specify compression, mangling, and pico-8 location. Note: tspico8 will attempt to detect the pico-8 location automatically.
-3. Run `bin/tspico8.js run -d mycart` to watch for changes inside of `mycart` and recompile/relaunch when detected.
+1. Run `npm run init mycart` to generate the default workspace.
+2. Optionally configure `mycart/tspico8.json` to specify compression, mangling, and pico-8 location. Note: tspico8 will attempt to detect the pico-8 location automatically.
+3. Run `npm run start mycart` to watch for changes inside of `mycart` and recompile/relaunch when detected.
 
 ### Configuration (tspico8.json)
 
@@ -43,7 +43,7 @@ using a typed language with PICO-8.
   "pico8": {
     "executable": "path/to/pico8/executable/file"
   },
-  "compression": { 
+  "compression": {
     "compressedFile": "build/compressed.js",
     "indentLevel": 1,
     "compress": false, // enable compression
@@ -92,7 +92,7 @@ USE THEM AT YOUR OWN RISK :-)
 
 ### Workflow (after workspace init)
 
-1. Run `bin/tspico8.js run -d mycart (or whatever dir you prefer)`.
+1. Run `npm run start mycart (or whatever dir you prefer)`.
 2. Modify `mycart/main.ts` and PICO-8 will restart upon every file save.
 3. Modify `mycart/spritesheet.png` and PICO-8 will restart upon every file save.
 4. Spritesheet colors should be limited to the PICO-8 color palette.
@@ -104,12 +104,14 @@ recompiling, or they will be overwritten after each build.
 
 ### Commands
 
-    # builds bin/tspico8.js from typescript
-    $ npm run build-bin
     # creates project skeleton inside of p8build
-    $ bin/tspico8.js init
+    $ npm run init
+    # alternatively
+    $ npx tsx src/tspico8 init
     # watches for changes and reloads PICO-8 on recompile
-    $ bin/tspico8.js run
+    $ npm run start
+    # alternatively
+    $ npx tsx src/tspico8 run
     # formats TypeScript code (run before submitting PR)
     $ npm run prettier-format
 
